@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "ricardopdj.github.io/omdb-react/precache-manifest.9bb324972e8b82d9b9f6b197bef4cff2.js"
+  "/omdb-react/precache-manifest.803957ceb35dca9f20eb659e73ff2107.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("ricardopdj.github.io/omdb-react/index.html", {
+workbox.routing.registerNavigationRoute("/omdb-react/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
