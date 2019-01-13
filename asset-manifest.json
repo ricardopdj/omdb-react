@@ -1,7 +1,7 @@
 {
   "main.css": "/omdb-react/static/css/main.902f54ed.chunk.css",
-  "main.js": "/omdb-react/static/js/main.4146fdd3.chunk.js",
-  "main.js.map": "/omdb-react/static/js/main.4146fdd3.chunk.js.map",
+  "main.js": "/omdb-react/static/js/main.4d57ee32.chunk.js",
+  "main.js.map": "/omdb-react/static/js/main.4d57ee32.chunk.js.map",
   "static/css/1.83f8381d.chunk.css": "/omdb-react/static/css/1.83f8381d.chunk.css",
   "static/js/1.3e106697.chunk.js": "/omdb-react/static/js/1.3e106697.chunk.js",
   "static/js/1.3e106697.chunk.js.map": "/omdb-react/static/js/1.3e106697.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/media/logo.svg": "/omdb-react/static/media/logo.5d5d9eef.svg",
   "static/css/main.902f54ed.chunk.css.map": "/omdb-react/static/css/main.902f54ed.chunk.css.map",
   "index.html": "/omdb-react/index.html",
-  "precache-manifest.803957ceb35dca9f20eb659e73ff2107.js": "/omdb-react/precache-manifest.803957ceb35dca9f20eb659e73ff2107.js",
+  "precache-manifest.1ab2e3481e9bf1762d8e5af0c7902912.js": "/omdb-react/precache-manifest.1ab2e3481e9bf1762d8e5af0c7902912.js",
   "service-worker.js": "/omdb-react/service-worker.js"
 }

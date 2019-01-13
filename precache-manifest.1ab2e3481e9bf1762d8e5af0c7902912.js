@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/omdb-react/static/js/runtime~main.51e94324.js"
   },
   {
-    "revision": "4146fdd333e474037bad",
-    "url": "/omdb-react/static/js/main.4146fdd3.chunk.js"
+    "revision": "4d57ee324aa213f2a118",
+    "url": "/omdb-react/static/js/main.4d57ee32.chunk.js"
   },
   {
     "revision": "3e10669722cf1058520b",
     "url": "/omdb-react/static/js/1.3e106697.chunk.js"
   },
   {
-    "revision": "4146fdd333e474037bad",
+    "revision": "4d57ee324aa213f2a118",
     "url": "/omdb-react/static/css/main.902f54ed.chunk.css"
   },
   {
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/omdb-react/static/css/1.83f8381d.chunk.css"
   },
   {
-    "revision": "72c68ca2c91c4b946995f8d1fb5e6e26",
+    "revision": "45fe8787a52b9aad021c6ab8c58e19f6",
     "url": "/omdb-react/index.html"
   }
 ];
