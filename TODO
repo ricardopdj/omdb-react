@@ -1,0 +1,67 @@
+Desafio Frontend 2019
+
+O objetivo deste desafio é criar uma aplicação web responsiva para realizar a busca de filmes, séries e jogos através da API OMDB.
+
+A API do OMDB é aberta aos usuários e para realizar as chamadas é necessário criar uma apikey através do link: http://www.omdbapi.com/apikey.aspx
+
+A documentação esta no link: http://www.omdbapi.com/
+
+Requisitos:
+
+A aplicação deverá ser responsiva
+
+Deverá possuir uma página inicial para pesquisa
+
+Será feita a pesquisa com base no texto digitado pelo usuário
+
+O resultado da requisição deverá ser paginado
+
+Deverá ser exibido o título e o pôster do item
+
+Deverá haver uma forma de exportar os resultados da pesquisa para um arquivo (.csv ou .txt ou qualquer outro)
+
+Ao selecionar um item da pesquisa, deverá ser aberto um modal contento as seguintes informações do item
+
+Titulo
+
+Pôster
+
+Plot (Enredo)
+
+Diretor
+
+Atores
+
+Gênero
+
+Ano de Lançamento
+
+Duração
+
+País
+
+Avaliações
+
+Deverá conter a fonte de avaliação
+
+Deverá conter a nota/avaliação
+
+Deverá conter um link para o IMDB passando o id retornado pela API.
+
+Ex: http://imdb.com/title/{imdbid} 
+
+Serão avaliados os seguintes itens:
+
+Design
+
+UX
+
+Arquitetura
+
+Documentação
+
+Qualidade do Código
+
+Não há preferência por linguagem, então pode ser utilizado qualquer framework, biblioteca, etc...
+
+Após a conclusão, deverá ser enviado um link de acesso ao repositório github com o projeto e a documentação para implementação e execução em nosso ambiente.
