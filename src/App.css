@@ -1,3 +1,9 @@
+body {
+  background-color: #1B1B1E;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -29,4 +35,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.card {
+  background-color: transparent;
+  border: none;
+}
+
+.title {
+  cursor: pointer;
+  height: 100%;
+}
+
+.title-name {
+  font-size: 1.3rem;
+  text-align: center;
+  width: 100%;
+}
+
+.page-link {
+  background-color: #373F51;
+  border:none;
+  color: #D8DBE2;
 }

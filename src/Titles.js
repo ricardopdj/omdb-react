@@ -1,20 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {
-  Container,
   Row,
   Col,
-  Input,
   Card,
-  Button,
-  CardImg,
-  CardTitle,
   CardText,
-  CardDeck,
-  CardSubtitle,
-  CardBody,
-  Media
+  CardImg,
+  CardBody
 } from 'reactstrap';
+
 
 const Titles = (props) => {
 
@@ -26,8 +20,8 @@ const Titles = (props) => {
         <Row>
           {
             props.list.map((title, index) =>
-            <Col key={index} sm="3" className="mb-3">
-                <Card className="h-100">
+            <Col key={index} sm="3" className="mb-5">
+                <Card className="title">
                     {
                       title.Poster !== 'N/A' ? (
                         <CardImg className="img-fluid" top src={title.Poster} alt={title.Title}/>
@@ -38,13 +32,14 @@ const Titles = (props) => {
                       )
                     }
                     <CardBody className="d-flex align-items-end">
-                        <CardText>{title.Title}</CardText>
+                        <CardText className="title-name">{title.Title}</CardText>
                     </CardBody>
                 </Card>
             </Col>
             )
           }
         </Row>
+
     )
 }
 
