@@ -53,6 +53,39 @@ body {
   width: 100%;
 }
 
+.title img {
+  min-height: 365px;
+  position: relative;
+}
+
+.title img:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  border: 2px dotted rgb(200, 200, 200);
+  border-radius: 5px;
+}
+
+.title img:after {
+  align-items: center;
+  content: "Broken Image of " attr(alt);
+  display: block;
+  font-size: 16px;
+  font-style: normal;
+  color: rgb(100, 100, 100);
+  position: absolute;
+  padding: 0 15px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
 .page-link {
   background-color: #373F51;
   border:none;

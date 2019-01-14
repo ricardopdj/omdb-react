@@ -21,10 +21,10 @@ class TitleModal extends Component {
           <Modal isOpen={isOpen} toggle={this.toggle} className={this.props.className}>
             <ModalHeader toggle={this.toggle}>{title.Title}</ModalHeader>
             <ModalBody>
-                <div className="text-center">
-                  <img src={title.Poster} alt={title.Title}/>
+                <div className="text-center title">
+                  { title.Poster !== 'N/A' && <img src={title.Poster} alt={title.Title} className="mb-3"/> }
                 </div>
-                <div className="my-5">
+                <div className="px-3">
                   <p><strong>Plot</strong><br/>{title.Plot}</p>
                   <p><strong>Director</strong><br/>{title.Director}</p>
                   <p><strong>Actors</strong><br/>{title.Actors}</p>
@@ -32,7 +32,7 @@ class TitleModal extends Component {
                   <p><strong>Release date</strong><br/>{title.Released}</p>
                   <p><strong>Runtime</strong><br/>{title.Runtime}</p>
                   <p><strong>Country</strong><br/>{title.Country}</p>
-                  <p><strong>Ratings</strong><br/>
+                  <div className="pb-3"><strong>Ratings</strong><br/>
                   {
                     title.Ratings.map((rating, index) =>
                       <div key={index}>
@@ -40,7 +40,7 @@ class TitleModal extends Component {
                       </div>
                     )
                   }
-                  </p>
+                  </div>
                   <p>
                     <strong>On IMDB:</strong><br/>
                     <a href={`http://imdb.com/title/${title.imdbID}`} target="_blank">http://imdb.com/title/{title.imdbID}</a>
