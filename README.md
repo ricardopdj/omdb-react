@@ -1,4 +1,4 @@
-# Udacity Neighborhood Map Project
+# OMDb Search
 
 ## Getting Started
 
