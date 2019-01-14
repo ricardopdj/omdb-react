@@ -27,7 +27,7 @@ class Titles extends Component {
           {
             titles.map((title, index) =>
             <Col key={index} sm="3" className="mb-5">
-                <Card className="title" onClick={() => this.props.onGetInfo(title)}>
+                <Card className="title" onClick={() => this.props.onGetInfo(title.imdbID)}>
                     {
                       title.Poster !== 'N/A' ? (
                         <CardImg className="img-fluid" top src={title.Poster} alt={title.Title}/>

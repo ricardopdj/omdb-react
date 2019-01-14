@@ -44,6 +44,8 @@ class App extends Component {
             OMDbAPI
                 .searchByTitle(title, page)
                 .then((result) => {
+                    console.log(result);
+
                     if (result.Response === 'True') {
                         this.setContent(result);
                     } else {
@@ -57,7 +59,23 @@ class App extends Component {
             this.clearContent();
             this.setState({searching: false})
         }
+    }
 
+    getTitleInfo = (imdbID) => {
+        OMDbAPI
+            .searchByID(imdbID)
+            .then((result) => {
+                console.log(result);
+
+                if (result.Response === 'True') {
+                    this.setState({ modalContent:result, modal: true });
+                } else {
+                    this.setError(result)
+                }
+            })
+            .catch(() => {
+                this.setState({apiError: true, searching: false})
+            });
     }
 
     setContent = (result) => {
@@ -95,14 +113,7 @@ class App extends Component {
         this.search(this.state.currentTitle, pageNumber);
     }
 
-    getTitleInfo = (title) => {
-      console.log(title);
 
-        this.setState({
-            modalContent: title,
-            modal: true
-        })
-    }
 
     render() {
         return (
