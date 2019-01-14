@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
-import logo from './logo.svg'
 import './App.css'
 import * as OMDbAPI from './OMDbAPI'
 import {Debounce} from 'react-throttle'
-import Pagination from "react-js-pagination"
 import {
     Container,
     Row,
@@ -11,6 +9,7 @@ import {
     Input
 } from 'reactstrap'
 import Titles from './Titles'
+import TitleModal from './TitleModal'
 import { BeatLoader } from 'react-spinners';
 
 class App extends Component {
@@ -21,29 +20,42 @@ class App extends Component {
         activePage: 1,
         totalPages: null,
         apiError: false,
-        searching: false
+        apiErrorMsg: '',
+        searching: false,
+        modal: false,
+        modalContent: ''
+    }
+
+    // this.toggle = this.toggle.bind(this);
+
+    modalToggle = () => {
+        this.setState({modal: !this.state.modal});
     }
 
     search = (title, page = 1) => {
-        this.setState({searching: true});
 
         if (title !== this.state.currentTitle) {
             this.clearContent();
         }
 
         if (title) {
-            this.setState({currentTitle: title});
+            this.setState({currentTitle: title, searching: true});
 
             OMDbAPI
                 .searchByTitle(title, page)
                 .then((result) => {
-                    this.setContent(result);
+                    if (result.Response === 'True') {
+                        this.setContent(result);
+                    } else {
+                        this.setError(result)
+                    }
                 })
                 .catch(() => {
                     this.setState({apiError: true, searching: false})
                 });
         } else {
             this.clearContent();
+            this.setState({searching: false})
         }
 
     }
@@ -56,16 +68,40 @@ class App extends Component {
                 totalPages: (result.totalResults / 10),
                 searching: false
             });
+        } else {
+            this.clearContent();
         }
     }
 
     clearContent = () => {
-        this.setState({currentTitle: '', titles: [], totalResults: 0, activePage: 1, totalPages: null});
+        this.setState({
+            currentTitle: '',
+            titles: [],
+            totalResults: 0,
+            activePage: 1,
+            totalPages: null,
+            searching: false,
+            apiError: false,
+            apiErrorMsg: ''
+        });
     }
 
-    handlePageChange(pageNumber) {
+    setError = (result) => {
+        this.setState({apiError: true, apiErrorMsg: result.Error, searching: false})
+    }
+
+    handlePageChange = (pageNumber) => {
         this.setState({activePage: pageNumber});
         this.search(this.state.currentTitle, pageNumber);
+    }
+
+    getTitleInfo = (title) => {
+      console.log(title);
+
+        this.setState({
+            modalContent: title,
+            modal: true
+        })
     }
 
     render() {
@@ -84,29 +120,7 @@ class App extends Component {
                     </Col>
                 </Row>
 
-                {this.state.totalResults > 0 &&
-                <Row>
-                    <Col>
-                        <Pagination
-                            activePage={this.state.activePage}
-                            itemsCountPerPage={10}
-                            totalItemsCount={this.state.totalResults}
-                            pageRangeDisplayed={5}
-                            onChange={this
-                            .handlePageChange
-                            .bind(this)}
-                            itemClass="page-item"
-                            linkClass="page-link"
-                            activeLinkClass="active"
-                            prevPageText="Prev"
-                            nextPageText="Next"
-                            pageRangeDisplayed="5"
-                            hideDisabled={true}/>
-                    </Col>
-                </Row>
-                }
-
-
+                {/* Search loading icon */}
                 <div className="text-center">
                     <BeatLoader
                     sizeUnit={"px"}
@@ -116,7 +130,30 @@ class App extends Component {
                     />
                 </div>
 
-                {this.state.totalResults > 0 && !this.state.searching && <Titles list={this.state.titles}/>}
+                {/* List of titles and pagination */}
+                {
+                    this.state.currentTitle &&
+                    !this.state.searching &&
+                    <Titles
+                        titles={this.state.titles}
+                        onGetInfo={this.getTitleInfo}
+                        error={this.state.apiErrorMsg}
+                        activePage={this.state.activePage}
+                        totalItemsCount={this.state.totalResults}
+                        onPageChange={this.handlePageChange}
+                        error={this.state.apiErrorMsg}
+                    />
+                }
+
+                {
+                  this.state.modal &&
+                  <TitleModal
+                      title={this.state.modalContent}
+                      isOpen={this.state.modal}
+                      onToggle={this.modalToggle}
+                  />
+                }
+
             </Container>
         );
     }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {
   Row,
@@ -8,20 +8,26 @@ import {
   CardImg,
   CardBody
 } from 'reactstrap';
+import Pagination from "react-js-pagination"
 
+class Titles extends Component {
 
-const Titles = (props) => {
+    render() {
+      const {
+        titles,
+        activePage,
+        totalItemsCount,
+        error
+      } = this.props
 
-    const getInfo = (venue) => {
-        props.onGetInfo(venue);
-    }
-
-    return (
+      return (
+        <div>
         <Row>
+          {/* Show Titles as Cards */}
           {
-            props.list.map((title, index) =>
+            titles.map((title, index) =>
             <Col key={index} sm="3" className="mb-5">
-                <Card className="title">
+                <Card className="title" onClick={() => this.props.onGetInfo(title)}>
                     {
                       title.Poster !== 'N/A' ? (
                         <CardImg className="img-fluid" top src={title.Poster} alt={title.Title}/>
@@ -38,9 +44,37 @@ const Titles = (props) => {
             </Col>
             )
           }
+
+          {/* Show Api error messages */}
+          { error && <Col>{error}</Col> }
         </Row>
 
-    )
+        {/* Pagination */}
+        {
+          totalItemsCount > 0 &&
+          <Row>
+              <Col>
+                  <Pagination
+                    activePage={activePage}
+                    itemsCountPerPage={10}
+                    totalItemsCount={totalItemsCount}
+                    pageRangeDisplayed={5}
+                    onChange={this.props.onPageChange.bind(this)}
+                    itemClass="page-item"
+                    linkClass="page-link"
+                    activeLinkClass="active"
+                    prevPageText="Prev"
+                    nextPageText="Next"
+                    pageRangeDisplayed="5"
+                    hideDisabled={true}
+                  />
+              </Col>
+          </Row>
+          }
+        </div>
+
+      )
+    }
 }
 
 // Titles.propTypes = {
