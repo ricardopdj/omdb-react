@@ -35,13 +35,12 @@ class TitleModal extends Component {
                         <p>
                             <strong>Country</strong><br/>{title.Country}</p>
                         <div className="pb-3">
-                            <strong>Ratings</strong><br/> {title
-                                .Ratings
-                                .map((rating, index) => <div key={index}>
-                                    {rating.Source}
-                                    - {rating.Value}
-                                </div>)
-}
+                            <strong>Ratings</strong><br/>
+                            {
+                                title.Ratings.map((rating, index) =>
+                                    <div key={index}>{rating.Source}- {rating.Value}</div>
+                                )
+                            }
                         </div>
                         <p>
                             <strong>On IMDB:</strong><br/>

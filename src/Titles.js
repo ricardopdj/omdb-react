@@ -23,7 +23,7 @@ class Titles extends Component {
                         <CSVLink data={titles} className="btn bg-secondary">Export to CSV</CSVLink>
                     </Col>
                 </Row>
-}
+                }
 
                 <Row>
                     {/* Show Titles as Cards */}
@@ -36,7 +36,7 @@ class Titles extends Component {
                             </CardBody>
                         </Card>
                     </Col>)
-}
+                    }
 
                     {/* Show Api error messages */}
                     {error && <Col>{error}</Col>}
@@ -63,7 +63,7 @@ class Titles extends Component {
                             hideDisabled={true}/>
                     </Col>
                 </Row>
-}
+                }
             </div>
 
         )

@@ -147,13 +147,13 @@ class App extends Component {
                     totalItemsCount={this.state.totalResults}
                     onPageChange={this.handlePageChange}
                     error={this.state.apiErrorMsg}/>
-}
+                }
 
                 {this.state.modal && <TitleModal
                     title={this.state.modalContent}
                     isOpen={this.state.modal}
                     onToggle={this.modalToggle}/>
-}
+                }
 
             </Container>
         );
