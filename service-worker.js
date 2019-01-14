@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/omdb-react/precache-manifest.2524b7f6edaafaeb604022a6cf24e152.js"
+  "/omdb-react/precache-manifest.a6c95f541706898f5854c63b3319afa1.js"
 );
 
 workbox.clientsClaim();
