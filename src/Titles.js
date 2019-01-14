@@ -6,9 +6,12 @@ import {
   Card,
   CardText,
   CardImg,
-  CardBody
+  CardBody,
+  Button
 } from 'reactstrap';
 import Pagination from "react-js-pagination"
+import { CSVLink, CSVDownload } from "react-csv";
+
 
 class Titles extends Component {
 
@@ -22,6 +25,7 @@ class Titles extends Component {
 
       return (
         <div>
+          {!error && <Row className="mb-3"><Col><CSVLink data={titles}>Export to CSV</CSVLink></Col></Row>}
         <Row>
           {/* Show Titles as Cards */}
           {

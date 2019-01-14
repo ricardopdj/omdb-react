@@ -119,7 +119,7 @@ class App extends Component {
         return (
             <Container className="py-5">
                 <h1 className="text-center">OMDB search</h1>
-                <Row className="mt-3 mb-5">
+                <Row className="my-3">
                     <Col>
                         <Debounce time="400" handler="onChange">
                             <Input
