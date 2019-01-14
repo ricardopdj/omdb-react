@@ -2,15 +2,10 @@ import React, {Component} from 'react'
 import './App.css'
 import * as OMDbAPI from './OMDbAPI'
 import {Debounce} from 'react-throttle'
-import {
-    Container,
-    Row,
-    Col,
-    Input
-} from 'reactstrap'
+import {Container, Row, Col, Input} from 'reactstrap'
 import Titles from './Titles'
 import TitleModal from './TitleModal'
-import { BeatLoader } from 'react-spinners';
+import {BeatLoader} from 'react-spinners';
 
 class App extends Component {
     state = {
@@ -26,12 +21,14 @@ class App extends Component {
         modalContent: ''
     }
 
-    // this.toggle = this.toggle.bind(this);
-
+    // Handle modal on/off
     modalToggle = () => {
-        this.setState({modal: !this.state.modal});
+        this.setState({
+            modal: !this.state.modal
+        });
     }
 
+    // Search on OMDb API by title and page
     search = (title, page = 1) => {
 
         if (title !== this.state.currentTitle) {
@@ -44,8 +41,6 @@ class App extends Component {
             OMDbAPI
                 .searchByTitle(title, page)
                 .then((result) => {
-                    console.log(result);
-
                     if (result.Response === 'True') {
                         this.setContent(result);
                     } else {
@@ -61,14 +56,14 @@ class App extends Component {
         }
     }
 
+    // Search on OMDb API by imdbID then
+    // open a modal with the title content
     getTitleInfo = (imdbID) => {
         OMDbAPI
             .searchByID(imdbID)
             .then((result) => {
-                console.log(result);
-
                 if (result.Response === 'True') {
-                    this.setState({ modalContent:result, modal: true });
+                    this.setState({modalContent: result, modal: true});
                 } else {
                     this.setError(result)
                 }
@@ -78,6 +73,8 @@ class App extends Component {
             });
     }
 
+    // Set the state to create a grid of 'movies'
+    // or clear/reset the state if there is no search result
     setContent = (result) => {
         if (result.totalResults) {
             this.setState({
@@ -91,6 +88,7 @@ class App extends Component {
         }
     }
 
+    // Clear/reset the state
     clearContent = () => {
         this.setState({
             currentTitle: '',
@@ -104,16 +102,16 @@ class App extends Component {
         });
     }
 
+    // Set erros from OMDb API
     setError = (result) => {
         this.setState({apiError: true, apiErrorMsg: result.Error, searching: false})
     }
 
+    // Handle pagination component change
     handlePageChange = (pageNumber) => {
         this.setState({activePage: pageNumber});
         this.search(this.state.currentTitle, pageNumber);
     }
-
-
 
     render() {
         return (
@@ -134,36 +132,28 @@ class App extends Component {
                 {/* Search loading icon */}
                 <div className="text-center">
                     <BeatLoader
-                    sizeUnit={"px"}
-                    size={30}
-                    color={'#D8DBE2'}
-                    loading={this.state.searching}
-                    />
+                        sizeUnit={"px"}
+                        size={30}
+                        color={'#D8DBE2'}
+                        loading={this.state.searching}/>
                 </div>
 
                 {/* List of titles and pagination */}
-                {
-                    this.state.currentTitle &&
-                    !this.state.searching &&
-                    <Titles
-                        titles={this.state.titles}
-                        onGetInfo={this.getTitleInfo}
-                        error={this.state.apiErrorMsg}
-                        activePage={this.state.activePage}
-                        totalItemsCount={this.state.totalResults}
-                        onPageChange={this.handlePageChange}
-                        error={this.state.apiErrorMsg}
-                    />
-                }
+                {this.state.currentTitle && !this.state.searching && <Titles
+                    titles={this.state.titles}
+                    onGetInfo={this.getTitleInfo}
+                    error={this.state.apiErrorMsg}
+                    activePage={this.state.activePage}
+                    totalItemsCount={this.state.totalResults}
+                    onPageChange={this.handlePageChange}
+                    error={this.state.apiErrorMsg}/>
+}
 
-                {
-                  this.state.modal &&
-                  <TitleModal
-                      title={this.state.modalContent}
-                      isOpen={this.state.modal}
-                      onToggle={this.modalToggle}
-                  />
-                }
+                {this.state.modal && <TitleModal
+                    title={this.state.modalContent}
+                    isOpen={this.state.modal}
+                    onToggle={this.modalToggle}/>
+}
 
             </Container>
         );
