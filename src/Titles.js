@@ -20,7 +20,7 @@ class Titles extends Component {
                 {/* CSV export Component */}
                 {!error && <Row className="mb-3">
                     <Col>
-                        <CSVLink data={titles} className="btn bg-secondary">Export to CSV</CSVLink>
+                        <CSVLink data={titles} separator={";"} className="btn bg-secondary">Export to CSV</CSVLink>
                     </Col>
                 </Row>
                 }
